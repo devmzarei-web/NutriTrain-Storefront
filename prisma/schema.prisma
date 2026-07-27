@@ -1,0 +1,62 @@
+datasource db {
+  provider = "sqlite"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model AdminUser {
+  id        String   @id @default(cuid())
+  username  String   @unique
+  password  String
+  createdAt DateTime @default(now())
+}
+
+model StorefrontHero {
+  id           String   @id @default("hero")
+  headline     String   @default("مهندسی علم تغذیه و تمرین، در دست مربیان حرفه‌ای")
+  subtitle     String   @default("تنظیم دقیق برنامه غذایی هوشمند بر اساس استانداردهای ISSN، مدیریت زنده ست‌های تمرینی با تایمر صوتی، آنالیز کامل شاخص‌های فیزیولوژیک بدنی و صدور نسخه چاپی شکیل PDF.")
+  badgeText    String   @default("پلتفرم تخصصی مربیان ورزشی و متخصصین تغذیه")
+  trialDays    Int      @default(7)
+  heroImageUrl String?
+  updatedAt    DateTime @updatedAt
+}
+
+model MediaAsset {
+  id         String   @id @default(cuid())
+  title      String
+  category   String   @default("GENERAL") // "LOGO", "HERO", "FEATURE", "GALLERY"
+  url        String
+  mimeType   String
+  sizeBytes  Int      @default(0)
+  uploadedAt DateTime @default(now())
+}
+
+model StorefrontFeature {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  icon        String   @default("BrainCircuit")
+  badge       String   @default("تخصصی")
+  imageUrl    String?
+  order       Int      @default(0)
+}
+
+model StorefrontPricing {
+  id        String  @id @default(cuid())
+  name      String
+  price     Int
+  billing   String  @default("monthly")
+  badge     String?
+  isPopular Boolean @default(false)
+  features  String
+  order     Int     @default(0)
+}
+
+model StorefrontFaq {
+  id       String @id @default(cuid())
+  question String
+  answer   String
+  order    Int    @default(0)
+}
