@@ -75,8 +75,8 @@ export default function HeroCurvedShowcase({ heroData }: HeroCurvedShowcaseProps
     // the back wall — edges are close, center recedes
     // ============================================
 
-    const isMobile = window.innerWidth < 640
-    const isTablet = window.innerWidth >= 640 && window.innerWidth < 1024
+    const isMobile = typeof window !== 'undefined' ? window.innerWidth < 640 : false
+    const isTablet = typeof window !== 'undefined' ? (window.innerWidth >= 640 && window.innerWidth < 1024) : false
     
     // Dynamically adjust spread and depth to match the CSS card widths 
     // (w-[280px] sm:w-[400px] lg:w-[520px]) so they are perfectly shoulder-to-shoulder on all devices

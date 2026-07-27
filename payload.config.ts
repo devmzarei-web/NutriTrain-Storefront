@@ -1,4 +1,4 @@
-import { sqliteAdapter } from "@payloadcms/db-sqlite"
+import { postgresAdapter } from "@payloadcms/db-postgres"
 import { lexicalEditor } from "@payloadcms/richtext-lexical"
 import { buildConfig } from "payload"
 import path from "path"
@@ -14,6 +14,8 @@ import { HeroSection } from "./src/globals/HeroSection"
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
+
+console.log("DB_URI inside payload.config.ts:", process.env.DATABASE_URI);
 
 export default buildConfig({
   admin: {
@@ -38,9 +40,9 @@ export default buildConfig({
   typescript: {
     outputFile: path.resolve(dirname, "payload-types.ts"),
   },
-  db: sqliteAdapter({
-    client: {
-      url: "file:./payload.db",
+  db: postgresAdapter({
+    pool: {
+      connectionString: process.env.DATABASE_URI || '',
     },
   }),
 })
