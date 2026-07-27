@@ -1,4 +1,15 @@
+import fs from 'fs'
 import { getPayload } from 'payload'
+
+// Automatically load .env environment variables for standalone script execution
+if (fs.existsSync('.env')) {
+  try {
+    process.loadEnvFile('.env')
+  } catch (e) {
+    // Node.js fallback
+  }
+}
+
 import configPromise from './src/payload.config.ts'
 
 async function sync() {
