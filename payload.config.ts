@@ -18,6 +18,7 @@ const dirname = path.dirname(filename)
 console.log("DB_URI inside payload.config.ts:", process.env.DATABASE_URI);
 
 export default buildConfig({
+  serverURL: process.env.NEXT_PUBLIC_SERVER_URL || '',
   admin: {
     user: "users",
   },
