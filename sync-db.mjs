@@ -1,15 +1,28 @@
 import fs from 'fs'
-import { getPayload } from 'payload'
 
-// Automatically load .env environment variables for standalone script execution
+// Explicitly parse .env file line by line
 if (fs.existsSync('.env')) {
-  try {
-    process.loadEnvFile('.env')
-  } catch (e) {
-    // Node.js fallback
+  const envContent = fs.readFileSync('.env', 'utf8')
+  for (const line of envContent.split('\n')) {
+    const trimmed = line.trim()
+    if (trimmed && !trimmed.startsWith('#')) {
+      const eqIdx = trimmed.indexOf('=')
+      if (eqIdx > 0) {
+        const key = trimmed.slice(0, eqIdx).trim()
+        let val = trimmed.slice(eqIdx + 1).trim()
+        if ((val.startsWith('"') && val.endsWith('"')) || (val.startsWith("'") && val.endsWith("'"))) {
+          val = val.slice(1, -1)
+        }
+        process.env[key] = val
+      }
+    }
   }
 }
 
+const activeUri = process.env.DATABASE_URI || process.env.POSTGRES_URL || process.env.DATABASE_URL || ''
+console.log(`Connecting with URI: ${activeUri.replace(/:([^@]+)@/, ':****@')}`)
+
+import { getPayload } from 'payload'
 import configPromise from './src/payload.config.ts'
 
 async function sync() {
