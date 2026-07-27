@@ -22,11 +22,10 @@ if (fs.existsSync('.env')) {
 const activeUri = process.env.DATABASE_URI || process.env.POSTGRES_URL || process.env.DATABASE_URL || ''
 console.log(`Connecting with URI: ${activeUri.replace(/:([^@]+)@/, ':****@')}`)
 
-import { getPayload } from 'payload'
-import configPromise from './src/payload.config.ts'
-
 async function sync() {
   console.log('Initializing Payload and creating PostgreSQL tables...')
+  const { default: configPromise } = await import('./src/payload.config.ts')
+  const { getPayload } = await import('payload')
   const config = await configPromise
   const payload = await getPayload({ config })
   console.log('SUCCESS: All PostgreSQL tables created successfully!')
