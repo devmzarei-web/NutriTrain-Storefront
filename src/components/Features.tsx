@@ -100,7 +100,7 @@ export default function Features({ features = defaultFeatures }: FeaturesProps) 
                     {getIconComponent(item.icon)}
                   </div>
                   {item.badge && (
-                    <span className="px-3 py-1 rounded-full bg-slate-100 text-slate-700 font-en text-xs font-bold">
+                    <span className="px-3 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-bold">
                       {item.badge}
                     </span>
                   )}

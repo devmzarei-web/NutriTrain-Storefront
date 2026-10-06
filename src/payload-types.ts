@@ -521,6 +521,10 @@ export interface HeroSection {
   headlinePrimary: string;
   headlineGradient: string;
   subtitle: string;
+  secondaryBadgeText?: string | null;
+  secondaryHeadlinePrimary?: string | null;
+  secondaryHeadlineGradient?: string | null;
+  secondarySubtitle?: string | null;
   primaryCtaLabel?: string | null;
   secondaryCtaLabel?: string | null;
   athleteImage?: (number | null) | Media;
@@ -583,6 +587,10 @@ export interface HeroSectionSelect<T extends boolean = true> {
   headlinePrimary?: T;
   headlineGradient?: T;
   subtitle?: T;
+  secondaryBadgeText?: T;
+  secondaryHeadlinePrimary?: T;
+  secondaryHeadlineGradient?: T;
+  secondarySubtitle?: T;
   primaryCtaLabel?: T;
   secondaryCtaLabel?: T;
   athleteImage?: T;

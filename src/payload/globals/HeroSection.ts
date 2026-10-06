@@ -31,9 +31,33 @@ export const HeroSection: GlobalConfig = {
     {
       name: 'subtitle',
       type: 'textarea',
-      defaultValue: 'تنظیم برنامه‌های ورزشی و رژیم غذایی شاگردان با ابزارهای هوش مصنوعی، صدور آنی وب‌اپلیکیشن PWA و پرداخت امن درگاه زیبال.',
+      defaultValue: 'وقت خود را صرف رشد کنید، نه کارهای تکراری. با ابزارهای نوتری‌ترِین، مدیریت ده‌ها شاگرد سریع‌تر و دقیق‌تر از همیشه است.',
       required: true,
-      label: 'Subtitle / Description Quote',
+      label: 'Right Subtitle / Description',
+    },
+    {
+      name: 'secondaryBadgeText',
+      type: 'text',
+      defaultValue: 'AI EMPOWERED WORKFLOW',
+      label: 'Left Super Title (Badge)',
+    },
+    {
+      name: 'secondaryHeadlinePrimary',
+      type: 'text',
+      defaultValue: 'برنامه‌های علمی و دقیق',
+      label: 'Left Headline (Line 1)',
+    },
+    {
+      name: 'secondaryHeadlineGradient',
+      type: 'text',
+      defaultValue: 'طراحی با هوش مصنوعی',
+      label: 'Left Headline (Line 2)',
+    },
+    {
+      name: 'secondarySubtitle',
+      type: 'textarea',
+      defaultValue: 'صدور سریع و حرفه‌ای برنامه‌های تمرینی و غذایی در پایه هوش مصنوعی، برای ارائه بالاترین کیفیت به شاگردان.',
+      label: 'Left Subtitle / Description',
     },
     {
       name: 'primaryCtaLabel',

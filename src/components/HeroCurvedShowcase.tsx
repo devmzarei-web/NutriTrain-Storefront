@@ -24,12 +24,17 @@ export default function HeroCurvedShowcase({ heroData }: HeroCurvedShowcaseProps
   const animRef = useRef<number>(0)
   const lastTimeRef = useRef<number>(0)
 
-  const headlinePrimary = heroData?.headlinePrimary || 'مدیریت هوشمند برنامه تمرینی'
-  const headlineGradient = heroData?.headlineGradient || 'و تغذیه‌ای مربیان بدنسازی'
-  const subtitle = heroData?.subtitle || 'تنظیم برنامه‌های ورزشی و رژیم غذایی شاگردان با ابزارهای هوش مصنوعی، صدور آنی وب‌اپلیکیشن PWA و پرداخت امن درگاه زیبال.'
+  const headlinePrimary = heroData?.headlinePrimary || 'مدیریت هوشمند شاگردان'
+  const headlineGradient = heroData?.headlineGradient || 'اتوماسیون کامل کارها'
+  const subtitle = heroData?.subtitle || 'وقت خود را صرف رشد کنید، نه کارهای تکراری. با ابزارهای نوتری‌ترین، مدیریت ده‌ها شاگرد سریع‌تر و دقیق‌تر از همیشه است.'
   const primaryCta = heroData?.primaryCtaLabel || 'شروع رایگان اشتراک مربی'
   const secondaryCta = heroData?.secondaryCtaLabel || 'بررسی امکانات'
   const athleteUrl = heroData?.athleteImage?.url || '/images/athlete_portrait.png'
+
+  const secondaryBadgeText = heroData?.secondaryBadgeText || 'AI EMPOWERED WORKFLOW'
+  const secondaryHeadlinePrimary = heroData?.secondaryHeadlinePrimary || 'برنامه‌های علمی و دقیق'
+  const secondaryHeadlineGradient = heroData?.secondaryHeadlineGradient || 'طراحی با هوش مصنوعی'
+  const secondarySubtitle = heroData?.secondarySubtitle || 'صدور سریع و حرفه‌ای برنامه‌های تمرینی و غذایی بر پایه هوش مصنوعی برای ارائه بالاترین کیفیت و نتیجه به شاگردان.'
 
   const galleryImages: string[] = heroData?.galleryImages?.length > 0
     ? heroData.galleryImages.map((item: any) => item.image?.url || '')
@@ -212,17 +217,17 @@ export default function HeroCurvedShowcase({ heroData }: HeroCurvedShowcaseProps
           <div className="flex-1 space-y-4 hidden md:flex flex-col items-center text-center w-full md:w-1/3">
             <div className="inline-flex items-center justify-center gap-2 text-teal-400 text-[11px] font-en font-extrabold tracking-[0.2em] uppercase">
               <Sparkles className="w-3.5 h-3.5" />
-              <span>AI EMPOWERED WORKFLOW</span>
+              <span>{secondaryBadgeText}</span>
             </div>
 
             <h2 className="text-2xl sm:text-3xl lg:text-[2.75rem] font-heading font-black text-white leading-[1.2] tracking-tight">
-              برنامه‌های علمی و دقیق
+              {secondaryHeadlinePrimary}
               <br />
-              <span className="text-gradient">طراحی با هوش مصنوعی</span>
+              <span className="text-gradient">{secondaryHeadlineGradient}</span>
             </h2>
 
             <p className="text-[13px] sm:text-[14px] text-white/50 leading-relaxed font-medium italic max-w-sm">
-              صدور سریع و حرفه‌ای برنامه‌های تمرینی و غذایی بر پایه هوش مصنوعی برای ارائه بالاترین کیفیت و نتیجه به شاگردان.
+              {secondarySubtitle}
             </p>
           </div>
 

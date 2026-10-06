@@ -49,7 +49,7 @@ export default function StorefrontClient({ data }: StorefrontClientProps) {
         <Pricing pricingTiers={data.pricingTiers} />
         <FAQ faqs={data.faqs} />
       </main>
-      <Footer />
+      <Footer globalData={data.globalSettings} />
 
       {/* Single-Page Payment Success Confirmation Modal */}
       {showSuccessModal && (
